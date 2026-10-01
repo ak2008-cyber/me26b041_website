@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #f2f6fa;
+      color: #0e2a47;
+    }
+    #count { font-size: 5rem; font-weight: 700; min-width: 3ch; text-align: center; }
+    .buttons { display: flex; gap: 1rem; }
+    button {
+      width: 3.5rem; height: 3.5rem;
+      font-size: 1.75rem;
+      border: 0; border-radius: 8px;
+      background: #0e2a47; color: #fff;
+      cursor: pointer;
+    }
+    button:hover { background: #1b4a7a; }
+    button:focus-visible { outline: 3px solid #f2a541; outline-offset: 2px; }
+    #reset { width: auto; height: auto; padding: 0.5rem 1rem; font-size: 1rem; background: transparent; color: #0e2a47; border: 1px solid #0e2a47; }
+  </style>
+</head>
+<body>
+  <div id="count" aria-live="polite">0</div>
+
+  <div class="buttons">
+    <button id="decrease" aria-label="Decrease">-</button>
+    <button id="increase" aria-label="Increase">+</button>
+  </div>
+
+  <button id="reset">Reset</button>
+
+  <script>
+    let count = 0;
+    const display = document.getElementById("count");
+
+    function render() {
+      display.textContent = count;
+    }
+
+    document.getElementById("increase").addEventListener("click", () => {
+      count++;
+      render();
+    });
+
+    document.getElementById("decrease").addEventListener("click", () => {
+      count--;
+      render();
+    });
+
+    document.getElementById("reset").addEventListener("click", () => {
+      count = 0;
+      render();
+    });
+  </script>
+</body>
+</html>
